@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/review
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  ## Hibernate Properties
+  # The SQL dialect makes Hibernate generate better SQL for the chosen database
+  jpa:
+    hibernate:
+      ddl-auto: update
