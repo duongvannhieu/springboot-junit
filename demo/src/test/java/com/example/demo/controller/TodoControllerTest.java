@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.repository.db.Todo;
+import com.example.demo.db.Todo;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

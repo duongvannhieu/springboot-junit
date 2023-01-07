@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.repository.db.Todo;
+import com.example.demo.db.Todo;
 import com.example.demo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
