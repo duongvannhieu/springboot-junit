@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.repository.TodoRepository;
-import com.example.demo.repository.db.Todo;
+import com.example.demo.db.Todo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

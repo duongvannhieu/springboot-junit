@@ -1,4 +1,4 @@
-package com.example.demo.repository.db;
+package com.example.demo.db;
 
 import lombok.Getter;
 import lombok.Setter;
