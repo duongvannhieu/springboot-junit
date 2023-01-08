@@ -8,6 +8,10 @@ import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
@@ -21,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public LoginResponse login(@RequestBody LoginRequest request) {
+    public LoginResponse login(@RequestBody LoginRequest request) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         return userService.loginUser(request);
     }
 

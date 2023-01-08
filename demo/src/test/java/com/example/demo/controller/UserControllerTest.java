@@ -8,6 +8,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
@@ -17,6 +19,7 @@ import java.io.IOException;
 
 public class UserControllerTest extends AbstractTest{
 
+    private static final Logger logger = LoggerFactory.getLogger(UserControllerTest.class);
     private final String URL_REGISTER_USER = "/api/v1/registerUser";
     private final String URL_LOGIN = "/api/v1/login";
 
@@ -141,6 +144,7 @@ public class UserControllerTest extends AbstractTest{
         Assert.assertEquals(200, status);
         String jsonOutput = mvcResult.getResponse().getContentAsString();
         LoginResponse registerUserResponse = super.mapFromJson(jsonOutput, LoginResponse.class);
+        logger.info(registerUserResponse.getJwt());
         Assert.assertEquals("Login Success", registerUserResponse.getJwt());
     }
 
