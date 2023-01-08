@@ -14,6 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.Optional;
 
 @Service
@@ -52,13 +55,13 @@ public class UserService {
         return response;
     }
 
-    public LoginResponse loginUser(LoginRequest request) {
+    public LoginResponse loginUser(LoginRequest request) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         Optional<User> user = userRepository.findByUsername(request.getUsername());
         LoginResponse response = new LoginResponse();
         response.setUsername(request.getUsername());
         if (user.isPresent()) {
             if (passwordEncoder().matches(request.getPassword(), user.get().getPassword())) {
-                response.setJwt("Login Success");
+                response.setJwt(JwtToken.createJwtSingedHMAC(Long.toString(user.get().getId())));
                 return response;
             }
         }
